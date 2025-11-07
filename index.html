@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Muhammad Atta — DevOps Engineer Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Cairo:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <meta
+      name="description"
+      content="Muhammad Atta — DevOps & Cloud Engineer. Portfolio, projects, and cloud resume."
+    />
+    <style>
+      /* small inline RTL helpers so toggle works immediately */
+      :root {
+        --accent: #00aaff;
+        --bg: #0d1117;
+        --card: #161b22;
+        --muted: #8b949e;
+      }
+      .lang-ar {
+        direction: rtl;
+      }
+      .lang-en {
+        direction: ltr;
+      }
+      .lang-ar a {
+        direction: ltr;
+      }
+    </style>
+  </head>
+  <body class="lang-en">
+    <!-- Floating Language Toggle -->
+    <button id="langToggle" class="btn-toggle" aria-label="Toggle language">
+      🇺🇸 English / 🇸🇦 العربية
+    </button>
+
+    <!-- Floating Navigation -->
+    <nav class="floating-nav" aria-label="Page navigation">
+      <a href="#profile" title="Profile">Profile</a>
+      <a href="#projects" title="Projects">Projects</a>
+      <a href="#skills" title="Skills">Skills</a>
+      <a href="#certs" title="Certifications">Certs</a>
+      <a href="#blog" title="Blog">Blog</a>
+      <a href="#contact" title="Contact">Contact</a>
+    </nav>
+
+    <main class="page">
+      <header class="hero">
+        <div class="hero-inner">
+          <!-- Profile Photo -->
+          <div class="profile-photo">
+            <img src="assets/images/155086759.jpg" alt="Muhammad Atta Photo" />
+          </div>
+
+          <!-- Name & Title -->
+          <div class="hero-text">
+            <h1 id="name-en">Muhammad Atta</h1>
+            <h1 id="name-ar" class="hidden">محمد عطاء</h1>
+            <p class="subtitle" id="title-en">
+              DevOps Engineer · Cloud Engineer · Software Developer
+            </p>
+            <p class="subtitle hidden" id="title-ar">
+              مهندس DevOps · مهندس سحابي · مطور برامج
+            </p>
+
+            <p class="contact" id="contact-en">
+              <a href="mailto:matta5292@gmail.com">matta5292@gmail.com</a> · +92
+              318 8156147 ·
+              <a
+                href="https://github.com/muhammad21236"
+                target="_blank"
+                rel="noopener"
+                >github.com/muhammad21236</a
+              >
+              ·
+              <a
+                href="https://www.linkedin.com/in/muhammad-atta-24b073325/"
+                target="_blank"
+                rel="noopener"
+                >linkedin.com/in/muhammad-atta</a
+              >
+            </p>
+
+            <p class="contact hidden" id="contact-ar">
+              <a href="mailto:matta5292@gmail.com">matta5292@gmail.com</a> · +92
+              318 8156147 ·
+              <a
+                href="https://github.com/muhammad21236"
+                target="_blank"
+                rel="noopener"
+                >github.com/muhammad21236</a
+              >
+              ·
+              <a
+                href="https://www.linkedin.com/in/muhammad-atta-24b073325/"
+                target="_blank"
+                rel="noopener"
+                >linkedin.com/in/muhammad-atta</a
+              >
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <!-- ENGLISH CONTENT -->
+      <section id="profile" class="card content-en">
+        <h2 class="section-title">Profile</h2>
+        <p class="lead">
+          Results-driven DevOps and Cloud Engineer specializing in automation,
+          scalability, and CI/CD. Experienced in designing and deploying
+          production-ready systems using AWS, Kubernetes, Docker, Terraform, and
+          GitHub Actions. Strong software engineering fundamentals with a focus
+          on observability, performance, and maintainable infrastructure.
+        </p>
+      </section>
+
+      <section id="education" class="card content-en">
+        <h2 class="section-title">Education</h2>
+        <div class="two-col">
+          <div>
+            <h3>University of the Punjab</h3>
+            <p class="muted">
+              BSc (Hons) Computer Science — Dec 2021 – Jul 2025
+            </p>
+          </div>
+          <div>
+            <p>
+              Relevant coursework: Functional Programming, Data Structures &
+              Algorithms, Information Security, Computer Networks.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="card content-en">
+        <h2 class="section-title">Selected Projects</h2>
+
+        <article class="project">
+          <h3>
+            Perfect Parking App
+            <span class="meta">(Python, Django, OpenCV, REST APIs)</span>
+          </h3>
+          <p>
+            Engineered a computer-vision-based parking system that detects and
+            publishes real-time parking availability. Implemented backend
+            services with Django REST Framework to receive and process OpenCV
+            client updates, and optimized data pipeline for low latency.
+          </p>
+          <p class="project-links">
+            <a
+              class="repo"
+              href="https://github.com/muhammad21236/Parking_App_FYP"
+              target="_blank"
+              rel="noopener"
+              >View Repository</a
+            >
+          </p>
+        </article>
+
+        <article class="project">
+          <h3>
+            E-commerce Microservices Deployment
+            <span class="meta">(AWS, Terraform, ArgoCD)</span>
+          </h3>
+          <p>
+            Designed and deployed a distributed microservices platform on AWS
+            EKS using Terraform for IaC. Implemented GitOps workflows with
+            ArgoCD and CI pipelines with GitHub Actions to enable safe,
+            versioned rollouts and automated observability.
+          </p>
+          <p class="project-links">
+            <a
+              class="repo"
+              href="https://github.com/muhammad21236/E_COMMERCE_DEVOPS_Implementation"
+              target="_blank"
+              rel="noopener"
+              >View Repository</a
+            >
+          </p>
+        </article>
+
+        <article class="project">
+          <h3>
+            Fullstack Deployment: Containers → AWS
+            <span class="meta">(Docker, Terraform, ECS)</span>
+          </h3>
+          <p>
+            Architected three-phase scaling strategy and deployed containerized
+            services to AWS App Runner and ECS. Built CI/CD pipelines to support
+            canary and blue/green deployments and integrated health checks and
+            monitoring.
+          </p>
+          <p class="project-links">
+            <a
+              class="repo"
+              href="https://github.com/muhammad21236/fem-fd-service"
+              target="_blank"
+              rel="noopener"
+              >View Repository</a
+            >
+          </p>
+        </article>
+
+        <article class="project">
+          <h3>
+            Workout Tracker API
+            <span class="meta">(Go, PostgreSQL, Docker)</span>
+          </h3>
+          <p>
+            Built a secure REST API in Go with JWT authentication and bcrypt for
+            password hashing. Containerized services with Docker, integrated
+            PostgreSQL with migrations, and created automated tests to ensure
+            robustness.
+          </p>
+          <p class="project-links">
+            <a
+              class="repo"
+              href="https://github.com/muhammad21236/femProject"
+              target="_blank"
+              rel="noopener"
+              >View Repository</a
+            >
+          </p>
+        </article>
+      </section>
+
+      <section id="skills" class="card content-en">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+          <div>
+            <h4>Languages</h4>
+            <p>Python · Go · C++ · JavaScript · SQL</p>
+          </div>
+          <div>
+            <h4>Platforms & Tools</h4>
+            <p>
+              AWS · Docker · Kubernetes · Terraform · GitHub Actions · Jenkins
+            </p>
+          </div>
+          <div>
+            <h4>Frameworks & DB</h4>
+            <p>Django · FastAPI · Node.js · React · PostgreSQL · MongoDB</p>
+          </div>
+          <div>
+            <h4>Soft Skills</h4>
+            <p>Leadership · Teamwork · Communication · Problem Solving</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="certs" class="card content-en">
+        <h2 class="section-title">Certifications</h2>
+        <ul class="certs">
+          <li>Docker, Kubernetes & AWS with GitHub Actions — Udemy (2025)</li>
+          <li>Ultimate DevOps and Cloud Interview Guide — Udemy (2025)</li>
+          <li>Python Data Structures & Algorithms + LeetCode — Udemy (2024)</li>
+          <li>
+            <em
+              >AWS Certified Cloud Practitioner — Coming Soon (validation code
+              will be added)</em
+            >
+          </li>
+        </ul>
+      </section>
+
+      <section id="interests" class="card content-en">
+        <h2 class="section-title">Interests</h2>
+        <p>
+          Cloud-native architecture, DevOps automation, open source
+          contribution, system design, and AI-driven infrastructure.
+        </p>
+      </section>
+
+      <section id="blog" class="card content-en">
+        <h2 class="section-title">Blog</h2>
+        <p>
+          Longform write-ups and lessons learned will be posted to
+          <a href="https://dev.to" target="_blank" rel="noopener">Dev.to</a>.
+          Link will appear here when published.
+        </p>
+      </section>
+
+      <!-- ARABIC CONTENT -->
+      <section id="profile-ar" class="card content-ar hidden">
+        <h2 class="section-title">الملف الشخصي</h2>
+        <p class="lead">
+          مهندس (DevOps) وسحابة متمحور حول النتائج، متفانٍ في (الأتمتة)،
+          (القابلية للتوسع)، و(التسليم المستمر). خبرة في تصميم ونشر أنظمة جاهزة
+          للإنتاج باستخدام (AWS)، (Kubernetes)، (Docker)، (Terraform)، و(GitHub
+          Actions). أساس هندسي قوي مع تركيز على المراقبة، الأداء، وبنية قابلة
+          للصيانة.
+        </p>
+      </section>
+
+      <section id="education-ar" class="card content-ar hidden">
+        <h2 class="section-title">التعليم</h2>
+        <div class="two-col">
+          <div>
+            <h3>جامعة البنجاب</h3>
+            <p class="muted">
+              بكالوريوس (مع مرتبة الشرف) في علوم الحاسب — ديسمبر 2021 – يوليو
+              2025
+            </p>
+          </div>
+          <div>
+            <p>
+              المواد ذات الصلة: البرمجة الدالية، هياكل البيانات والخوارزميات،
+              أمن المعلومات، شبكات الحاسوب.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects-ar" class="card content-ar hidden">
+        <h2 class="section-title">المشاريع المختارة</h2>
+
+        <article class="project">
+          <h3>
+            Perfect Parking App
+            <span class="meta">(Python, Django, OpenCV, REST APIs)</span>
+          </h3>
+          <p>
+            تطوير نظام مواقف يعتمد على (Computer Vision) لاكتشاف الأماكن المتاحة
+            وتحديثها في الوقت الفعلي. تم بناء خدمات الواجهة الخلفية باستخدام
+            (Django REST Framework) لمعالجة بيانات عميل (OpenCV) وتحسين خط
+            البيانات لزمن استجابة منخفض.
+          </p>
+          <p class="project-links">
+            <a
+              class="repo"
+              href="https://github.com/muhammad21236/Parking_App_FYP"
+              target="_blank"
+              rel="noopener"
+              >مستودع (GitHub)</a
+            >
+          </p>
+        </article>
+
+        <article class="project">
+          <h3>
+            E-commerce Microservices Deployment
+            <span class="meta">(AWS, Terraform, ArgoCD)</span>
+          </h3>
+          <p>
+            نشر بنية خدمات مصغرة موزعة على (AWS EKS) باستخدام (Terraform) كأداة
+            IaC. تنفيذ سير عمل GitOps عبر (ArgoCD) وخطوط (CI/CD) باستخدام
+            (GitHub Actions) لنشر آمن وقابل للإصدار.
+          </p>
+          <p class="project-links">
+            <a
+              class="repo"
+              href="https://github.com/muhammad21236/E_COMMERCE_DEVOPS_Implementation"
+              target="_blank"
+              rel="noopener"
+              >مستودع (GitHub)</a
+            >
+          </p>
+        </article>
+
+        <article class="project">
+          <h3>
+            Fullstack Deployment: Containers → AWS
+            <span class="meta">(Docker, Terraform, ECS)</span>
+          </h3>
+          <p>
+            بناء استراتيجية توسع مكونة من ثلاث مراحل ونشر خدمات محزّمة على (AWS
+            App Runner) و(ECS). إنشاء خطوط (CI/CD) مؤتمتة لدعم نشر canary
+            وblue/green ودمج فحوصات الصحة والمراقبة.
+          </p>
+          <p class="project-links">
+            <a
+              class="repo"
+              href="https://github.com/muhammad21236/fem-fd-service"
+              target="_blank"
+              rel="noopener"
+              >مستودع (GitHub)</a
+            >
+          </p>
+        </article>
+
+        <article class="project">
+          <h3>
+            Workout Tracker API
+            <span class="meta">(Go, PostgreSQL, Docker)</span>
+          </h3>
+          <p>
+            تطوير واجهة برمجية (API) آمنة باستخدام (Go) مع مصادقة (JWT) واستخدام
+            (bcrypt) لحماية كلمات المرور. حزم الخدمات عبر (Docker) ودمج
+            (PostgreSQL) مع أدوات الهجرة والاختبارات الآلية.
+          </p>
+          <p class="project-links">
+            <a
+              class="repo"
+              href="https://github.com/muhammad21236/femProject"
+              target="_blank"
+              rel="noopener"
+              >مستودع (GitHub)</a
+            >
+          </p>
+        </article>
+      </section>
+
+      <section id="skills-ar" class="card content-ar hidden">
+        <h2 class="section-title">المهارات التقنية</h2>
+        <div class="skills-grid">
+          <div>
+            <h4>البرمجة</h4>
+            <p>Python · Go · C++ · JavaScript · SQL</p>
+          </div>
+          <div>
+            <h4>المنصات & الأدوات</h4>
+            <p>
+              (AWS) · (Docker) · (Kubernetes) · (Terraform) · (GitHub Actions) ·
+              (Jenkins)
+            </p>
+          </div>
+          <div>
+            <h4>الأطر & قواعد البيانات</h4>
+            <p>Django · FastAPI · Node.js · React · PostgreSQL · MongoDB</p>
+          </div>
+          <div>
+            <h4>المهارات الشخصية</h4>
+            <p>القيادة · العمل الجماعي · التواصل · حل المشكلات</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="certs-ar" class="card content-ar hidden">
+        <h2 class="section-title">الشهادات</h2>
+        <ul class="certs">
+          <li>Docker, Kubernetes & AWS with GitHub Actions — Udemy (2025)</li>
+          <li>Ultimate DevOps and Cloud Interview Guide — Udemy (2025)</li>
+          <li>Python Data Structures & Algorithms + LeetCode — Udemy (2024)</li>
+          <li>
+            <em
+              >(AWS Certified Cloud Practitioner) — قريبا (سيتم إضافة رمز
+              التحقق)</em
+            >
+          </li>
+        </ul>
+      </section>
+
+      <section id="interests-ar" class="card content-ar hidden">
+        <h2 class="section-title">الهوايات والاهتمامات</h2>
+        <p>
+          الحوسبة السحابية، أتمتة DevOps، المصادر المفتوحة، تصميم الأنظمة،
+          والتعلم المستمر.
+        </p>
+      </section>
+
+      <section id="blog-ar" class="card content-ar hidden">
+        <h2 class="section-title">المدونة</h2>
+        <p>
+          قريباً: منشورات حول كيفية بناء ونشر سيرتي في السحابة على (AWS) — سيكون
+          الرابط متاحاً هنا عند النشر.
+        </p>
+      </section>
+
+      <section id="contact" class="card">
+        <p>Visitor Count: <span id="visitor-count">Loading...</span></p>
+      </section>
+
+      <footer class="site-footer">
+        <p>© 2025 Muhammad Atta — DevOps & Cloud Engineer</p>
+      </footer>
+    </main>
+
+    <script>
+      // Language toggle & preference
+      const toggle = document.getElementById("langToggle");
+      const contentEn = document.querySelectorAll(".content-en");
+      const contentAr = document.querySelectorAll(".content-ar");
+      const nameEn = document.getElementById("name-en");
+      const nameAr = document.getElementById("name-ar");
+      const titleEn = document.getElementById("title-en");
+      const titleAr = document.getElementById("title-ar");
+      const contactEn = document.getElementById("contact-en");
+      const contactAr = document.getElementById("contact-ar");
+
+      function setLanguage(lang) {
+        if (lang === "ar") {
+          document.body.classList.add("lang-ar");
+          document.body.classList.remove("lang-en");
+          contentEn.forEach((n) => n.classList.add("hidden"));
+          contentAr.forEach((n) => n.classList.remove("hidden"));
+          nameEn.classList.add("hidden");
+          nameAr.classList.remove("hidden");
+          titleEn.classList.add("hidden");
+          titleAr.classList.remove("hidden");
+          contactEn.classList.add("hidden");
+          contactAr.classList.remove("hidden");
+        } else {
+          document.body.classList.add("lang-en");
+          document.body.classList.remove("lang-ar");
+          contentAr.forEach((n) => n.classList.add("hidden"));
+          contentEn.forEach((n) => n.classList.remove("hidden"));
+          nameAr.classList.add("hidden");
+          nameEn.classList.remove("hidden");
+          titleAr.classList.add("hidden");
+          titleEn.classList.remove("hidden");
+          contactAr.classList.add("hidden");
+          contactEn.classList.remove("hidden");
+        }
+        try {
+          localStorage.setItem("preferredLang", lang);
+        } catch (e) {}
+      }
+
+      toggle.addEventListener("click", () => {
+        const pref = localStorage.getItem("preferredLang") || "en";
+        setLanguage(pref === "en" ? "ar" : "en");
+      });
+
+      // Initialize saved preference
+      const saved = (function () {
+        try {
+          return localStorage.getItem("preferredLang");
+        } catch (e) {
+          return null;
+        }
+      })();
+      setLanguage(saved === "ar" ? "ar" : "en");
+
+      // Smooth scroll for floating nav
+      document.querySelectorAll(".floating-nav a").forEach((a) => {
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          const id = a.getAttribute("href").slice(1);
+          const el = document.getElementById(id);
+          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+
+      // Visitor counter fetch — replace with your API Gateway endpoint
+      const apiUrl = "https://bmlkzfzqmk.execute-api.ap-south-1.amazonaws.com/Prod/visits";
+      async function updateVisitorCount() {
+        try {
+          const res = await fetch(apiUrl);
+          if (!res.ok) throw new Error("Network response not ok");
+          const data = await res.json();
+          document.getElementById("visitor-count").textContent =
+            data.count ?? 0;
+        } catch (err) {
+          console.warn("Visitor counter error:", err);
+          document.getElementById("visitor-count").textContent = "Unavailable";
+        }
+      }
+      updateVisitorCount();
+    </script>
+  </body>
+</html>
