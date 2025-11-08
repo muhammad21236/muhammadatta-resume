@@ -62,10 +62,10 @@
             <h1 id="name-en">Muhammad Atta</h1>
             <h1 id="name-ar" class="hidden">محمد عطاء</h1>
             <p class="subtitle" id="title-en">
-              DevOps Engineer · Cloud Engineer · Software Developer
+              DevOps Engineer · Cloud Engineer
             </p>
             <p class="subtitle hidden" id="title-ar">
-              مهندس DevOps · مهندس سحابي · مطور برامج
+              مهندس DevOps · مهندس سحابي ·
             </p>
 
             <p class="contact" id="contact-en">
@@ -537,7 +537,8 @@
       });
 
       // Visitor counter fetch — replace with your API Gateway endpoint
-      const apiUrl = "https://bmlkzfzqmk.execute-api.ap-south-1.amazonaws.com/Prod/visits";
+      const apiUrl =
+        "https://bmlkzfzqmk.execute-api.ap-south-1.amazonaws.com/Prod/visits";
       async function updateVisitorCount() {
         try {
           const res = await fetch(apiUrl);
