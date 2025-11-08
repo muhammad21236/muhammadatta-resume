@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Muhammad Atta — DevOps Engineer Portfolio</title>
+    <title>Muhammad Atta — DevOps & Cloud Engineer</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,15 +12,15 @@
     />
     <meta
       name="description"
-      content="Muhammad Atta — DevOps & Cloud Engineer. Portfolio, projects, and cloud resume."
+      content="Muhammad Atta — DevOps & Cloud Engineer. Fluent in Saudi Arabic. Portfolio, projects, and cloud resume."
     />
     <style>
-      /* small inline RTL helpers so toggle works immediately */
       :root {
         --accent: #00aaff;
         --bg: #0d1117;
         --card: #161b22;
         --muted: #8b949e;
+        --success: #00d4aa;
       }
       .lang-ar {
         direction: rtl;
@@ -30,6 +30,51 @@
       }
       .lang-ar a {
         direction: ltr;
+      }
+
+      /* NEW: Job-seeking highlights */
+      .job-highlight {
+        background: linear-gradient(45deg, #00aaff22, #00d4aa22);
+        border-left: 4px solid var(--success);
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+      }
+
+      .availability-tag {
+        display: inline-block;
+        background: var(--success);
+        color: #0d1117;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        margin-left: 10px;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.8;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .language-badge {
+        background: var(--accent);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 25px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 5px 0;
+        font-weight: 600;
       }
     </style>
   </head>
@@ -42,10 +87,10 @@
     <!-- Floating Navigation -->
     <nav class="floating-nav" aria-label="Page navigation">
       <a href="#profile" title="Profile">Profile</a>
+      <a href="#availability" title="Availability">Availability</a>
       <a href="#projects" title="Projects">Projects</a>
       <a href="#skills" title="Skills">Skills</a>
       <a href="#certs" title="Certifications">Certs</a>
-      <a href="#blog" title="Blog">Blog</a>
       <a href="#contact" title="Contact">Contact</a>
     </nav>
 
@@ -61,12 +106,28 @@
           <div class="hero-text">
             <h1 id="name-en">Muhammad Atta</h1>
             <h1 id="name-ar" class="hidden">محمد عطاء</h1>
+
+            <!-- CHANGED: Added availability tag and modified title -->
             <p class="subtitle" id="title-en">
-              DevOps Engineer · Cloud Engineer
+              DevOps & Cloud Engineer
+              <span class="availability-tag"
+                >Available for Saudi Opportunities</span
+              >
             </p>
             <p class="subtitle hidden" id="title-ar">
-              مهندس DevOps · مهندس سحابي ·
+              مهندس DevOps وسحابي
+              <span class="availability-tag">متاح للفرص في السعودية</span>
             </p>
+
+            <!-- NEW: Language proficiency badges -->
+            <div class="language-badges" style="margin: 10px 0">
+              <div class="language-badge" id="lang-badge-en">
+                🏴󠁧󠁢󠁥󠁮󠁧󠁿 English: Professional
+              </div>
+              <div class="language-badge" id="lang-badge-ar" class="hidden">
+                🇸🇦 العربية: اللهجة السعودية (مثل اللغة الأم)
+              </div>
+            </div>
 
             <p class="contact" id="contact-en">
               <a href="mailto:matta5292@gmail.com">matta5292@gmail.com</a> · +92
@@ -75,14 +136,14 @@
                 href="https://github.com/muhammad21236"
                 target="_blank"
                 rel="noopener"
-                >github.com/muhammad21236</a
+                >GitHub</a
               >
               ·
               <a
                 href="https://www.linkedin.com/in/muhammad-atta-24b073325/"
                 target="_blank"
                 rel="noopener"
-                >linkedin.com/in/muhammad-atta</a
+                >LinkedIn</a
               >
             </p>
 
@@ -93,30 +154,90 @@
                 href="https://github.com/muhammad21236"
                 target="_blank"
                 rel="noopener"
-                >github.com/muhammad21236</a
+                >GitHub</a
               >
               ·
               <a
                 href="https://www.linkedin.com/in/muhammad-atta-24b073325/"
                 target="_blank"
                 rel="noopener"
-                >linkedin.com/in/muhammad-atta</a
+                >LinkedIn</a
               >
             </p>
           </div>
         </div>
       </header>
 
+      <!-- NEW: Availability Section -->
+      <section id="availability" class="card content-en">
+        <h2 class="section-title">🛫 Ready to Relocate to Saudi Arabia</h2>
+        <div class="job-highlight">
+          <p>
+            <strong>Immediate Availability:</strong> Can join immediately and
+            complete visa transfer process
+          </p>
+          <p>
+            <strong>Location Preference:</strong> Abha, Riyadh, Jeddah, or any
+            Saudi city
+          </p>
+          <p>
+            <strong>Seeking:</strong> Entry-level DevOps, Cloud Support, or IT
+            Support roles
+          </p>
+          <p>
+            <strong>Key Advantage:</strong> Native-level Saudi Arabic fluency
+            for seamless team integration and client communication
+          </p>
+        </div>
+      </section>
+
+      <section id="availability-ar" class="card content-ar hidden">
+        <h2 class="section-title">🛫 جاهز للانتقال إلى السعودية</h2>
+        <div class="job-highlight">
+          <p>
+            <strong>متاح فوراً:</strong> يمكنني الانضمام فوراً واستكمال عملية
+            نقل التأشيرة
+          </p>
+          <p>
+            <strong>الموقع المفضل:</strong> أبها، الرياض، جدة، أو أي مدينة
+            سعودية
+          </p>
+          <p>
+            <strong>أبحث عن:</strong> وظائف مبتدئ في DevOps، دعم سحابي، أو دعم
+            تقني
+          </p>
+          <p>
+            <strong>الميزة الأساسية:</strong> إجادة اللغة العربية بطلاقة (لهجة
+            سعودية) للاندماج السريع مع الفريق والتواصل مع العملاء
+          </p>
+        </div>
+      </section>
+
       <!-- ENGLISH CONTENT -->
       <section id="profile" class="card content-en">
         <h2 class="section-title">Profile</h2>
         <p class="lead">
-          Results-driven DevOps and Cloud Engineer specializing in automation,
-          scalability, and CI/CD. Experienced in designing and deploying
-          production-ready systems using AWS, Kubernetes, Docker, Terraform, and
-          GitHub Actions. Strong software engineering fundamentals with a focus
-          on observability, performance, and maintainable infrastructure.
+          Results-driven DevOps and Cloud Engineer with native fluency in Saudi
+          Arabic. Specializing in automation, scalability, and CI/CD.
+          Experienced in designing and deploying production-ready systems using
+          AWS, Kubernetes, Docker, Terraform, and GitHub Actions. Strong
+          software engineering fundamentals with a focus on observability,
+          performance, and maintainable infrastructure.
         </p>
+
+        <!-- NEW: Key strengths for Saudi market -->
+        <div style="margin-top: 1rem">
+          <h4>🎯 Why Hire Me for Saudi Projects:</h4>
+          <ul>
+            <li>
+              Communicate seamlessly with Saudi clients and team members in
+              native dialect
+            </li>
+            <li>Understand local business culture and work ethics</li>
+            <li>Technical skills combined with cultural familiarity</li>
+            <li>Quick integration into Saudi work environment</li>
+          </ul>
+        </div>
       </section>
 
       <section id="education" class="card content-en">
@@ -139,6 +260,26 @@
 
       <section id="projects" class="card content-en">
         <h2 class="section-title">Selected Projects</h2>
+
+        <article class="project">
+          <h3>
+            Cloud Resume & Portfolio
+            <span class="meta"
+              >(AWS, S3, CloudFront, API Gateway, Lambda, DynamoDB)</span
+            >
+          </h3>
+          <p>
+            Deployed this responsive portfolio website on AWS infrastructure
+            using S3 for hosting, CloudFront for CDN, and serverless backend
+            with API Gateway + Lambda for visitor counter. Demonstrates
+            practical AWS skills and understanding of cloud architecture.
+          </p>
+          <p class="project-links">
+            <span style="color: var(--success); font-weight: 600"
+              >★ Live Demo (You're viewing it now)</span
+            >
+          </p>
+        </article>
 
         <article class="project">
           <h3>
@@ -183,72 +324,40 @@
             >
           </p>
         </article>
-
-        <article class="project">
-          <h3>
-            Fullstack Deployment: Containers → AWS
-            <span class="meta">(Docker, Terraform, ECS)</span>
-          </h3>
-          <p>
-            Architected three-phase scaling strategy and deployed containerized
-            services to AWS App Runner and ECS. Built CI/CD pipelines to support
-            canary and blue/green deployments and integrated health checks and
-            monitoring.
-          </p>
-          <p class="project-links">
-            <a
-              class="repo"
-              href="https://github.com/muhammad21236/fem-fd-service"
-              target="_blank"
-              rel="noopener"
-              >View Repository</a
-            >
-          </p>
-        </article>
-
-        <article class="project">
-          <h3>
-            Workout Tracker API
-            <span class="meta">(Go, PostgreSQL, Docker)</span>
-          </h3>
-          <p>
-            Built a secure REST API in Go with JWT authentication and bcrypt for
-            password hashing. Containerized services with Docker, integrated
-            PostgreSQL with migrations, and created automated tests to ensure
-            robustness.
-          </p>
-          <p class="project-links">
-            <a
-              class="repo"
-              href="https://github.com/muhammad21236/femProject"
-              target="_blank"
-              rel="noopener"
-              >View Repository</a
-            >
-          </p>
-        </article>
       </section>
 
       <section id="skills" class="card content-en">
         <h2 class="section-title">Technical Skills</h2>
         <div class="skills-grid">
           <div>
-            <h4>Languages</h4>
-            <p>Python · Go · C++ · JavaScript · SQL</p>
+            <h4>Cloud Platforms</h4>
+            <p>AWS · Azure Fundamentals · Cloud Architecture</p>
           </div>
           <div>
-            <h4>Platforms & Tools</h4>
+            <h4>DevOps & Automation</h4>
             <p>
-              AWS · Docker · Kubernetes · Terraform · GitHub Actions · Jenkins
+              Docker · Kubernetes · Terraform · GitHub Actions · Jenkins · CI/CD
             </p>
           </div>
           <div>
-            <h4>Frameworks & DB</h4>
-            <p>Django · FastAPI · Node.js · React · PostgreSQL · MongoDB</p>
+            <h4>Languages</h4>
+            <p>Python · Go · JavaScript · SQL · Bash</p>
           </div>
           <div>
-            <h4>Soft Skills</h4>
-            <p>Leadership · Teamwork · Communication · Problem Solving</p>
+            <h4>Monitoring & Tools</h4>
+            <p>Prometheus · Grafana · Linux · Git · PostgreSQL</p>
+          </div>
+        </div>
+
+        <!-- NEW: Language Skills -->
+        <div style="margin-top: 1.5rem">
+          <h4>Language Proficiency</h4>
+          <div
+            style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 10px"
+          >
+            <div class="language-badge">🇸🇦 Arabic: Native Saudi Dialect</div>
+            <div class="language-badge">🏴󠁧󠁢󠁥󠁮󠁧󠁿 English: Professional</div>
+            <div class="language-badge">🇵🇰 Urdu: Native</div>
           </div>
         </div>
       </section>
@@ -260,29 +369,12 @@
           <li>Ultimate DevOps and Cloud Interview Guide — Udemy (2025)</li>
           <li>Python Data Structures & Algorithms + LeetCode — Udemy (2024)</li>
           <li>
-            <em
-              >AWS Certified Cloud Practitioner — Coming Soon (validation code
-              will be added)</em
+            <strong
+              >AWS Certified Cloud Practitioner — In Progress (Expected: March
+              2025)</strong
             >
           </li>
         </ul>
-      </section>
-
-      <section id="interests" class="card content-en">
-        <h2 class="section-title">Interests</h2>
-        <p>
-          Cloud-native architecture, DevOps automation, open source
-          contribution, system design, and AI-driven infrastructure.
-        </p>
-      </section>
-
-      <section id="blog" class="card content-en">
-        <h2 class="section-title">Blog</h2>
-        <p>
-          Longform write-ups and lessons learned will be posted to
-          <a href="https://dev.to" target="_blank" rel="noopener">Dev.to</a>.
-          Link will appear here when published.
-        </p>
       </section>
 
       <!-- ARABIC CONTENT -->
@@ -295,6 +387,19 @@
           Actions). أساس هندسي قوي مع تركيز على المراقبة، الأداء، وبنية قابلة
           للصيانة.
         </p>
+
+        <!-- NEW: Key strengths for Saudi market in Arabic -->
+        <div style="margin-top: 1rem">
+          <h4>🎯 لماذا توظفني للمشاريع السعودية:</h4>
+          <ul>
+            <li>
+              أتحدث مع العملاء وفرق العمل السعودية بطلاقة وباللهجة المحلية
+            </li>
+            <li>فهم الثقافة التجارية المحلية وأخلاقيات العمل</li>
+            <li>مهارات تقنية مدمجة مع الألفة الثقافية</li>
+            <li>اندماج سريع في بيئة العمل السعودية</li>
+          </ul>
+        </div>
       </section>
 
       <section id="education-ar" class="card content-ar hidden">
@@ -318,6 +423,26 @@
 
       <section id="projects-ar" class="card content-ar hidden">
         <h2 class="section-title">المشاريع المختارة</h2>
+
+        <article class="project">
+          <h3>
+            سيرة ذاتية سحابية
+            <span class="meta"
+              >(AWS, S3, CloudFront, API Gateway, Lambda, DynamoDB)</span
+            >
+          </h3>
+          <p>
+            نشر موقع السيرة الذاتية هذا على بنية (AWS) باستخدام (S3) للإستضافة،
+            (CloudFront) لشبكة التوصيل، ونظام خادم باستخدام (API Gateway +
+            Lambda) لعداد الزوار. يوضح المهارات العملية في (AWS) وفهم الهندسة
+            السحابية.
+          </p>
+          <p class="project-links">
+            <span style="color: var(--success); font-weight: 600"
+              >★ عرض مباشر (تشاهده الآن)</span
+            >
+          </p>
+        </article>
 
         <article class="project">
           <h3>
@@ -361,71 +486,43 @@
             >
           </p>
         </article>
-
-        <article class="project">
-          <h3>
-            Fullstack Deployment: Containers → AWS
-            <span class="meta">(Docker, Terraform, ECS)</span>
-          </h3>
-          <p>
-            بناء استراتيجية توسع مكونة من ثلاث مراحل ونشر خدمات محزّمة على (AWS
-            App Runner) و(ECS). إنشاء خطوط (CI/CD) مؤتمتة لدعم نشر canary
-            وblue/green ودمج فحوصات الصحة والمراقبة.
-          </p>
-          <p class="project-links">
-            <a
-              class="repo"
-              href="https://github.com/muhammad21236/fem-fd-service"
-              target="_blank"
-              rel="noopener"
-              >مستودع (GitHub)</a
-            >
-          </p>
-        </article>
-
-        <article class="project">
-          <h3>
-            Workout Tracker API
-            <span class="meta">(Go, PostgreSQL, Docker)</span>
-          </h3>
-          <p>
-            تطوير واجهة برمجية (API) آمنة باستخدام (Go) مع مصادقة (JWT) واستخدام
-            (bcrypt) لحماية كلمات المرور. حزم الخدمات عبر (Docker) ودمج
-            (PostgreSQL) مع أدوات الهجرة والاختبارات الآلية.
-          </p>
-          <p class="project-links">
-            <a
-              class="repo"
-              href="https://github.com/muhammad21236/femProject"
-              target="_blank"
-              rel="noopener"
-              >مستودع (GitHub)</a
-            >
-          </p>
-        </article>
       </section>
 
       <section id="skills-ar" class="card content-ar hidden">
         <h2 class="section-title">المهارات التقنية</h2>
         <div class="skills-grid">
           <div>
-            <h4>البرمجة</h4>
-            <p>Python · Go · C++ · JavaScript · SQL</p>
+            <h4>المنصات السحابية</h4>
+            <p>(AWS) · (Azure) · الهندسة السحابية</p>
           </div>
           <div>
-            <h4>المنصات & الأدوات</h4>
+            <h4>الأدوات والآليات</h4>
             <p>
-              (AWS) · (Docker) · (Kubernetes) · (Terraform) · (GitHub Actions) ·
-              (Jenkins)
+              (Docker) · (Kubernetes) · (Terraform) · (GitHub Actions) ·
+              (Jenkins) · (CI/CD)
             </p>
           </div>
           <div>
-            <h4>الأطر & قواعد البيانات</h4>
-            <p>Django · FastAPI · Node.js · React · PostgreSQL · MongoDB</p>
+            <h4>اللغات البرمجية</h4>
+            <p>Python · Go · JavaScript · SQL · Bash</p>
           </div>
           <div>
-            <h4>المهارات الشخصية</h4>
-            <p>القيادة · العمل الجماعي · التواصل · حل المشكلات</p>
+            <h4>المراقبة والأدوات</h4>
+            <p>Prometheus · Grafana · Linux · Git · PostgreSQL</p>
+          </div>
+        </div>
+
+        <!-- NEW: Language Skills in Arabic -->
+        <div style="margin-top: 1.5rem">
+          <h4>اللغات</h4>
+          <div
+            style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 10px"
+          >
+            <div class="language-badge">
+              🇸🇦 العربية: لهجة سعودية (مثل اللغة الأم)
+            </div>
+            <div class="language-badge">🏴󠁧󠁢󠁥󠁮󠁧󠁿 الإنجليزية: مستوى احترافي</div>
+            <div class="language-badge">🇵🇰 الأردية: لغة أم</div>
           </div>
         </div>
       </section>
@@ -437,36 +534,27 @@
           <li>Ultimate DevOps and Cloud Interview Guide — Udemy (2025)</li>
           <li>Python Data Structures & Algorithms + LeetCode — Udemy (2024)</li>
           <li>
-            <em
-              >(AWS Certified Cloud Practitioner) — قريبا (سيتم إضافة رمز
-              التحقق)</em
+            <strong
+              >(AWS Certified Cloud Practitioner) — قيد الدراسة (متوقع: مارس
+              2025)</strong
             >
           </li>
         </ul>
       </section>
 
-      <section id="interests-ar" class="card content-ar hidden">
-        <h2 class="section-title">الهوايات والاهتمامات</h2>
-        <p>
-          الحوسبة السحابية، أتمتة DevOps، المصادر المفتوحة، تصميم الأنظمة،
-          والتعلم المستمر.
-        </p>
-      </section>
-
-      <section id="blog-ar" class="card content-ar hidden">
-        <h2 class="section-title">المدونة</h2>
-        <p>
-          قريباً: منشورات حول كيفية بناء ونشر سيرتي في السحابة على (AWS) — سيكون
-          الرابط متاحاً هنا عند النشر.
-        </p>
-      </section>
-
       <section id="contact" class="card">
         <p>Visitor Count: <span id="visitor-count">Loading...</span></p>
+        <p style="margin-top: 10px; color: var(--muted); font-size: 0.9rem">
+          This resume is hosted on AWS S3, CloudFront, with serverless backend -
+          demonstrating cloud skills
+        </p>
       </section>
 
       <footer class="site-footer">
-        <p>© 2025 Muhammad Atta — DevOps & Cloud Engineer</p>
+        <p>
+          © 2025 Muhammad Atta — DevOps & Cloud Engineer | Ready for Saudi
+          Opportunities
+        </p>
       </footer>
     </main>
 
@@ -481,6 +569,8 @@
       const titleAr = document.getElementById("title-ar");
       const contactEn = document.getElementById("contact-en");
       const contactAr = document.getElementById("contact-ar");
+      const langBadgeEn = document.getElementById("lang-badge-en");
+      const langBadgeAr = document.getElementById("lang-badge-ar");
 
       function setLanguage(lang) {
         if (lang === "ar") {
@@ -494,6 +584,8 @@
           titleAr.classList.remove("hidden");
           contactEn.classList.add("hidden");
           contactAr.classList.remove("hidden");
+          if (langBadgeEn) langBadgeEn.classList.add("hidden");
+          if (langBadgeAr) langBadgeAr.classList.remove("hidden");
         } else {
           document.body.classList.add("lang-en");
           document.body.classList.remove("lang-ar");
@@ -505,6 +597,8 @@
           titleEn.classList.remove("hidden");
           contactAr.classList.add("hidden");
           contactEn.classList.remove("hidden");
+          if (langBadgeAr) langBadgeAr.classList.add("hidden");
+          if (langBadgeEn) langBadgeEn.classList.remove("hidden");
         }
         try {
           localStorage.setItem("preferredLang", lang);
@@ -536,7 +630,7 @@
         });
       });
 
-      // Visitor counter fetch — replace with your API Gateway endpoint
+      // Visitor counter fetch
       const apiUrl =
         "https://bmlkzfzqmk.execute-api.ap-south-1.amazonaws.com/Prod/visits";
       async function updateVisitorCount() {
