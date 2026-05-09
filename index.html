@@ -24,11 +24,56 @@
       background-size: 50px 50px;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     .glass {
       background: rgba(15, 23, 42, 0.6);
       backdrop-filter: blur(18px);
       border: 1px solid rgba(255,255,255,0.08);
       box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px) scale(0.96);
+      transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-80px);
+      transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal-left.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(80px);
+      transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal-right.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .float-card {
+      transition: transform 0.4s ease;
+    }
+
+    .float-card:hover {
+      transform: translateY(-10px);
     }
 
     .glow {
@@ -69,7 +114,7 @@
     </nav>
 
     <!-- HERO -->
-    <section class="grid xl:grid-cols-[1.45fr_0.55fr] gap-6 mb-6">
+    <section class="grid xl:grid-cols-[1.45fr_0.55fr] gap-6 mb-6 reveal">
 
       <div class="glass rounded-[40px] p-8 lg:p-14 relative overflow-hidden min-h-[620px] flex items-center">
 
@@ -83,7 +128,7 @@
             ☁️ AWS Certified Solutions Architect – Associate
           </div>
 
-          <h1 class="text-6xl md:text-7xl xl:text-[92px] font-black leading-[0.9] tracking-[-4px] mb-8 max-w-5xl">
+          <h1 class="text-5xl sm:text-6xl md:text-7xl xl:text-[92px] font-black leading-[0.9] tracking-[-4px] mb-8 max-w-5xl">
             Building Reliable Cloud Infrastructure & Modern DevOps Systems
           </h1>
 
@@ -152,9 +197,9 @@
         </div>
       </div>
 
-      <div class="flex flex-col gap-6">
+      <div class="flex flex-col gap-6 reveal-right">
 
-        <div class="glass rounded-[40px] p-8 hover:border-sky-400/20 transition duration-300">
+        <div class="glass rounded-[40px] p-6 sm:p-8 hover:border-sky-400/20 transition duration-300">
           <p class="text-slate-500 text-sm mb-2">Certification</p>
 
           <h2 class="text-2xl font-bold mb-4 leading-tight">
@@ -168,7 +213,7 @@
           </a>
         </div>
 
-        <div class="glass rounded-[40px] p-8 hover:border-sky-400/20 transition duration-300">
+        <div class="glass rounded-[40px] p-6 sm:p-8 hover:border-sky-400/20 transition duration-300">
           <div class="space-y-6">
             <div>
               <p class="text-slate-500 text-sm mb-1">Location</p>
@@ -191,7 +236,7 @@
     </section>
 
     <!-- EXPERIENCE + SKILLS -->
-    <section class="grid lg:grid-cols-2 gap-6 mb-6">
+    <section class="grid lg:grid-cols-2 gap-6 mb-6 reveal">
 
       <div id="experience" class="glass rounded-[32px] p-8">
         <div class="flex items-center justify-between mb-8">
@@ -257,7 +302,7 @@
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="glass rounded-[40px] p-8 lg:p-12 mb-6 overflow-hidden relative">
+    <section id="projects" class="glass rounded-[40px] p-6 sm:p-8 lg:p-12 mb-6 overflow-hidden relative reveal">
       <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-10">
         <div>
           <p class="text-sky-300 text-sm font-semibold mb-2">FEATURED WORK</p>
@@ -271,13 +316,13 @@
 
       <div class="grid xl:grid-cols-3 md:grid-cols-2 gap-7">
 
-        <div class="bg-gradient-to-b from-white/[0.05] to-white/[0.02] border border-white/10 hover:border-sky-400/30 transition-all duration-300 rounded-[32px] p-8 hover:-translate-y-2 hover:shadow-2xl hover:shadow-sky-500/10">
+        <div class="float-card bg-gradient-to-b from-white/[0.05] to-white/[0.02] border border-white/10 hover:border-sky-400/30 transition-all duration-300 rounded-[32px] p-6 sm:p-8 hover:-translate-y-2 hover:shadow-2xl hover:shadow-sky-500/10">
           <div class="flex items-center justify-between mb-5">
             <span class="text-xs uppercase tracking-widest text-sky-300">Security</span>
             <span class="text-slate-500 text-sm">2025</span>
           </div>
 
-          <h3 class="text-[30px] font-bold mb-5 leading-tight tracking-tight">
+          <h3 class="text-[26px] sm:text-[30px] font-bold mb-5 leading-tight tracking-tight">
             Secure Containerized Infrastructure
           </h3>
 
@@ -292,13 +337,13 @@
           </a>
         </div>
 
-        <div class="bg-gradient-to-b from-white/[0.05] to-white/[0.02] border border-white/10 hover:border-sky-400/30 transition-all duration-300 rounded-[32px] p-8 hover:-translate-y-2 hover:shadow-2xl hover:shadow-sky-500/10">
+        <div class="float-card bg-gradient-to-b from-white/[0.05] to-white/[0.02] border border-white/10 hover:border-sky-400/30 transition-all duration-300 rounded-[32px] p-6 sm:p-8 hover:-translate-y-2 hover:shadow-2xl hover:shadow-sky-500/10">
           <div class="flex items-center justify-between mb-5">
             <span class="text-xs uppercase tracking-widest text-sky-300">Cloud</span>
             <span class="text-slate-500 text-sm">2024</span>
           </div>
 
-          <h3 class="text-[30px] font-bold mb-5 leading-tight tracking-tight">
+          <h3 class="text-[26px] sm:text-[30px] font-bold mb-5 leading-tight tracking-tight">
             AWS EKS Microservices Platform
           </h3>
 
@@ -313,13 +358,13 @@
           </a>
         </div>
 
-        <div class="bg-gradient-to-b from-white/[0.05] to-white/[0.02] border border-white/10 hover:border-sky-400/30 transition-all duration-300 rounded-[32px] p-8 hover:-translate-y-2 hover:shadow-2xl hover:shadow-sky-500/10">
+        <div class="float-card bg-gradient-to-b from-white/[0.05] to-white/[0.02] border border-white/10 hover:border-sky-400/30 transition-all duration-300 rounded-[32px] p-6 sm:p-8 hover:-translate-y-2 hover:shadow-2xl hover:shadow-sky-500/10">
           <div class="flex items-center justify-between mb-5">
             <span class="text-xs uppercase tracking-widest text-sky-300">Automation</span>
             <span class="text-slate-500 text-sm">2025</span>
           </div>
 
-          <h3 class="text-[30px] font-bold mb-5 leading-tight tracking-tight">
+          <h3 class="text-[26px] sm:text-[30px] font-bold mb-5 leading-tight tracking-tight">
             CI/CD Full-Stack Deployment
           </h3>
 
@@ -334,10 +379,41 @@
           </a>
         </div>
       </div>
+
+      <!-- PERFECT PARKING PROJECT -->
+      <div class="mt-7 bg-gradient-to-b from-white/[0.05] to-white/[0.02] border border-white/10 hover:border-sky-400/30 transition-all duration-300 rounded-[32px] p-6 sm:p-8 hover:-translate-y-2 hover:shadow-2xl hover:shadow-sky-500/10">
+        <div class="flex items-center justify-between mb-5">
+          <span class="text-xs uppercase tracking-widest text-sky-300">AI SYSTEM</span>
+          <span class="text-slate-500 text-sm">FYP</span>
+        </div>
+
+        <h3 class="text-[26px] sm:text-[30px] font-bold mb-5 leading-tight tracking-tight">
+          Perfect Parking – AI Smart Parking System
+        </h3>
+
+        <p class="text-slate-400 leading-8 mb-10 text-[15px]">
+          Developed a smart parking web application that helps drivers find real-time parking availability using AI and computer vision. Built backend services with Python, Django, and Django REST Framework while integrating OpenCV-based parking occupancy detection and real-time REST API updates.
+        </p>
+
+        <div class="flex flex-wrap gap-3 mb-8">
+          <div class="px-4 py-2 rounded-xl bg-white/5 border border-white/5 text-slate-300 text-sm">Python</div>
+          <div class="px-4 py-2 rounded-xl bg-white/5 border border-white/5 text-slate-300 text-sm">Django</div>
+          <div class="px-4 py-2 rounded-xl bg-white/5 border border-white/5 text-slate-300 text-sm">DRF</div>
+          <div class="px-4 py-2 rounded-xl bg-white/5 border border-white/5 text-slate-300 text-sm">OpenCV</div>
+          <div class="px-4 py-2 rounded-xl bg-white/5 border border-white/5 text-slate-300 text-sm">Computer Vision</div>
+          <div class="px-4 py-2 rounded-xl bg-white/5 border border-white/5 text-slate-300 text-sm">REST APIs</div>
+        </div>
+
+        <a href="https://github.com/muhammad21236/Parking_App_FYP"
+           target="_blank"
+           class="text-sky-300 hover:text-sky-200 font-medium">
+          View Repository →
+        </a>
+      </div>
     </section>
 
     <!-- EDUCATION -->
-    <section id="education" class="glass rounded-[32px] p-8 lg:p-10">
+    <section id="education" class="glass rounded-[32px] p-6 sm:p-8 lg:p-10 reveal">
       <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         <div>
           <p class="text-sky-300 text-sm font-semibold mb-2">EDUCATION</p>
@@ -353,7 +429,7 @@
     </section>
 
     <!-- CTA -->
-    <section class="mt-6 glass rounded-[40px] p-10 lg:p-14 text-center relative overflow-hidden">
+    <section class="mt-6 glass rounded-[40px] p-6 sm:p-10 lg:p-14 text-center relative overflow-hidden reveal">
       <div class="absolute inset-0 bg-gradient-to-r from-sky-500/5 via-transparent to-cyan-300/5"></div>
 
       <div class="relative z-10 max-w-3xl mx-auto">
@@ -387,5 +463,20 @@
     </footer>
 
   </main>
+  <script>
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, {
+      threshold: 0.12
+    });
+
+    reveals.forEach((el) => observer.observe(el));
+  </script>
 </body>
 </html>
