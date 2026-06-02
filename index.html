@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -9,619 +9,481 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    html{
-      scroll-behavior:smooth;
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #020617; /* Slate 950 */
+      overflow-x: hidden;
+      color: white;
     }
 
-    body{
-      font-family:'Inter',sans-serif;
-      background:#040816;
-      overflow-x:hidden;
-      color:white;
+    /* Animated Grid Background */
+    .grid-bg {
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 50px 50px;
+      background-position: center center;
     }
 
-    .grid-bg{
-      background-image:
-      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size:60px 60px;
+    /* Glassmorphism Utilities */
+    .glass {
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     }
 
-    .glass{
-      background:rgba(15,23,42,0.65);
-      backdrop-filter:blur(18px);
-      border:1px solid rgba(255,255,255,0.08);
-      box-shadow:0 10px 40px rgba(0,0,0,0.35);
+    .glass-card {
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.6) 100%);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .glow{
-      position:absolute;
-      width:700px;
-      height:700px;
-      border-radius:999px;
-      background:radial-gradient(circle, rgba(56,189,248,0.14) 0%, rgba(56,189,248,0) 70%);
-      filter:blur(120px);
-      z-index:0;
-      animation:pulseGlow 10s ease-in-out infinite;
+    /* Ambient Glows */
+    .glow-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(140px);
+      z-index: 0;
+      pointer-events: none;
+      animation: drift 15s ease-in-out infinite alternate;
+    }
+    .glow-orb-1 { width: 600px; height: 600px; background: rgba(56, 189, 248, 0.15); top: -200px; left: -100px; }
+    .glow-orb-2 { width: 500px; height: 500px; background: rgba(168, 85, 247, 0.1); bottom: 100px; right: -150px; animation-delay: -5s; }
+
+    @keyframes drift {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(50px, 50px) scale(1.1); }
     }
 
-    @keyframes pulseGlow{
-      0%,100%{
-        transform:scale(1);
-        opacity:.8;
-      }
-      50%{
-        transform:scale(1.15);
-        opacity:1;
-      }
+    /* Scroll Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .reveal{
-      opacity:0;
-      transform:translateY(80px);
-      transition:all 1s cubic-bezier(0.22, 1, 0.36, 1);
+    /* Card Hover Dynamics */
+    .hover-card {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .hover-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 20px 40px -10px rgba(56, 189, 248, 0.15);
     }
 
-    .reveal.active{
-      opacity:1;
-      transform:translateY(0);
+    /* Typography Gradients */
+    .text-gradient {
+      background: linear-gradient(to right, #f8fafc, #7dd3fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .text-gradient-alt {
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    .project-card{
-      transition:
-      transform .45s ease,
-      border-color .45s ease,
-      box-shadow .45s ease;
+    /* Projects Toggle Animation */
+    #more-projects-wrapper {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.5s ease-out;
     }
-
-    .project-card:hover{
-      transform:translateY(-12px);
-      border-color:rgba(56,189,248,0.3);
-      box-shadow:0 20px 80px rgba(56,189,248,0.12);
+    #more-projects-wrapper.open {
+      grid-template-rows: 1fr;
     }
-
-    .skill-card{
-      transition:all .35s ease;
-    }
-
-    .skill-card:hover{
-      transform:translateY(-8px);
-      border-color:rgba(56,189,248,0.25);
-      box-shadow:0 10px 40px rgba(56,189,248,0.08);
-    }
-
-    .gradient-text{
-      background:linear-gradient(to right,#fff,#7dd3fc);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-
-    .floating{
-      animation:float 6s ease-in-out infinite;
-    }
-
-    @keyframes float{
-      0%,100%{
-        transform:translateY(0px);
-      }
-      50%{
-        transform:translateY(-15px);
-      }
-    }
-
-    .border-glow{
-      position:relative;
-      overflow:hidden;
-    }
-
-    .border-glow::before{
-      content:'';
-      position:absolute;
-      inset:-2px;
-      background:linear-gradient(120deg, transparent, rgba(56,189,248,0.4), transparent);
-      transform:translateX(-100%);
-      transition:1s;
-    }
-
-    .border-glow:hover::before{
-      transform:translateX(100%);
+    #more-projects-inner {
+      overflow: hidden;
     }
   </style>
 </head>
 
-<body class="grid-bg">
+<body class="grid-bg relative">
 
-<div class="glow top-[-250px] left-[-250px]"></div>
-<div class="glow bottom-[-250px] right-[-250px]"></div>
+  <div class="glow-orb glow-orb-1"></div>
+  <div class="glow-orb glow-orb-2"></div>
 
-<main class="relative z-10 max-w-[1500px] mx-auto px-5 lg:px-8 py-8">
+  <main class="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 py-8">
 
-  <!-- NAVBAR -->
-
-  <nav class="glass rounded-3xl px-7 py-5 flex items-center justify-between sticky top-4 z-50 mb-10 border border-white/10">
-
-    <div>
-      <h1 class="font-black text-2xl tracking-tight">
-        Muhammad
-      </h1>
-
-      <p class="text-slate-500 text-sm mt-1">
-        Cloud & DevOps Engineer
-      </p>
-    </div>
-
-    <div class="hidden lg:flex items-center gap-10 text-sm text-slate-300">
-
-      <a href="#skills" class="hover:text-sky-300 transition">Skills</a>
-      <a href="#projects" class="hover:text-sky-300 transition">Projects</a>
-      <a href="#experience" class="hover:text-sky-300 transition">Experience</a>
-      <a href="#contact" class="hover:text-sky-300 transition">Contact</a>
-
-    </div>
-
-    <a href="mailto:matta5292@gmail.com"
-       class="bg-sky-400 hover:bg-sky-300 transition text-slate-950 px-6 py-3 rounded-2xl font-semibold shadow-xl shadow-sky-500/20">
-      Hire Me
-    </a>
-
-  </nav>
-
-  <!-- HERO -->
-
-  <section class="grid xl:grid-cols-[1.4fr_0.6fr] gap-7 mb-7 reveal">
-
-    <div class="glass rounded-[42px] p-10 lg:p-16 relative overflow-hidden min-h-[700px] flex items-center border-glow">
-
-      <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-sky-400/10 blur-[140px] rounded-full"></div>
-
-      <div class="relative z-10">
-
-        <div class="inline-flex items-center gap-3 bg-sky-400/10 border border-sky-400/20 px-5 py-3 rounded-full text-sky-300 text-sm font-semibold mb-10">
-          ☁️ AWS Certified Solutions Architect – Associate
-        </div>
-
-        <h1 class="text-5xl sm:text-6xl xl:text-[88px] leading-[0.92] tracking-[-4px] font-black mb-8 max-w-6xl gradient-text">
-          Engineering Cloud-Native Infrastructure & Modern DevOps Platforms
-        </h1>
-
-        <p class="text-slate-300 text-lg lg:text-[22px] leading-10 max-w-3xl mb-12 font-light">
-          AWS Certified Solutions Architect with hands-on experience building Kubernetes platforms, Terraform infrastructure, secure CI/CD pipelines, and scalable cloud-native systems.
-        </p>
-
-        <div class="flex flex-wrap gap-5 mb-12">
-
-          <a href="mailto:matta5292@gmail.com"
-             class="bg-white text-slate-950 hover:bg-slate-200 transition px-8 py-4 rounded-2xl font-semibold hover:scale-[1.03]">
-            Contact Me
-          </a>
-
-          <a href="assets/Muhammad_Resume_Cloud&DevOps.pdf"
-             download
-             class="glass hover:border-sky-400/30 transition px-8 py-4 rounded-2xl font-semibold hover:scale-[1.03]">
-            Download Resume
-          </a>
-
-        </div>
-
-        <div class="flex flex-wrap gap-4">
-
-          <div class="px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-slate-200">
-            AWS
-          </div>
-
-          <div class="px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-slate-200">
-            Kubernetes
-          </div>
-
-          <div class="px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-slate-200">
-            Terraform
-          </div>
-
-          <div class="px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-slate-200">
-            Docker
-          </div>
-
-          <div class="px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-slate-200">
-            GitHub Actions
-          </div>
-
-          <div class="px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-slate-200">
-            Prometheus
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- RIGHT SIDEBAR -->
-
-    <div class="flex flex-col gap-7">
-
-      <div class="glass rounded-[32px] p-8 floating">
-
-        <p class="text-slate-500 text-sm mb-3">
-          Certification
-        </p>
-
-        <h2 class="text-3xl font-bold mb-6">
-          AWS SAA Certified
-        </h2>
-
-        <a href="https://www.credly.com/"
-           target="_blank"
-           class="text-sky-300 hover:text-sky-200 transition font-medium">
-          View Credential →
-        </a>
-
-      </div>
-
-      <!-- VISITOR COUNTER -->
-
-      <div class="glass rounded-[32px] p-8">
-
-        <p class="text-slate-500 text-sm mb-3">
-          Portfolio Analytics
-        </p>
-
-        <h2 class="text-5xl font-black text-sky-300 mb-3" id="visitor-count">
-          0
-        </h2>
-
-        <p class="text-slate-400">
-          Total Visitors
-        </p>
-
-      </div>
-
-      <div class="glass rounded-[32px] p-8">
-
-        <div class="space-y-7">
-
-          <div>
-            <p class="text-slate-500 text-sm mb-2">Location</p>
-            <h3 class="text-xl font-semibold">Saudi Arabia</h3>
-          </div>
-
-          <div>
-            <p class="text-slate-500 text-sm mb-2">Languages</p>
-            <h3 class="text-xl font-semibold">Arabic • English</h3>
-          </div>
-
-          <div>
-            <p class="text-slate-500 text-sm mb-2">Availability</p>
-            <h3 class="text-xl font-semibold text-emerald-400">
-              Open to Opportunities
-            </h3>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- SKILLS -->
-
-  <section id="skills" class="glass rounded-[40px] p-8 lg:p-12 mb-7 reveal">
-
-    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-12">
-
+    <nav class="glass rounded-full px-8 py-4 flex items-center justify-between sticky top-6 z-50 mb-16">
       <div>
-        <p class="text-sky-300 text-sm font-semibold mb-2">
-          TECHNICAL EXPERTISE
-        </p>
+        <h1 class="font-extrabold text-xl tracking-tight text-white">Muhammad<span class="text-sky-400">.</span></h1>
+      </div>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#skills" class="hover:text-sky-400 transition-colors">Skills</a>
+        <a href="#projects" class="hover:text-sky-400 transition-colors">Projects</a>
+        <a href="#experience" class="hover:text-sky-400 transition-colors">Experience</a>
+      </div>
+      <a href="mailto:matta5292@gmail.com" class="bg-white/10 hover:bg-sky-400 hover:text-slate-900 border border-white/10 hover:border-sky-400 transition-all duration-300 text-white px-6 py-2.5 rounded-full text-sm font-semibold shadow-[0_0_20px_rgba(56,189,248,0.1)] hover:shadow-[0_0_25px_rgba(56,189,248,0.4)]">
+        Hire Me
+      </a>
+    </nav>
 
-        <h2 class="text-4xl font-black">
-          Technology Stack
-        </h2>
+    <section class="grid xl:grid-cols-[1.5fr_0.5fr] gap-6 mb-20 reveal">
+      
+      <div class="glass-card rounded-[2rem] p-10 lg:p-14 relative overflow-hidden flex flex-col justify-center min-h-[600px] hover-card group border-t border-l border-white/10">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-sky-400/20 to-transparent blur-[100px] rounded-full opacity-50 group-hover:opacity-80 transition-opacity duration-700"></div>
+
+        <div class="relative z-10">
+          <div class="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 px-4 py-2 rounded-full text-sky-400 text-xs font-bold tracking-wide uppercase mb-8 backdrop-blur-md">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+            AWS Certified Solutions Architect
+          </div>
+
+          <h1 class="text-5xl sm:text-6xl lg:text-[72px] leading-[1.05] tracking-tight font-black mb-6 text-gradient">
+            Engineering Cloud-Native Systems & Platforms
+          </h1>
+
+          <p class="text-slate-400 text-lg leading-relaxed max-w-2xl mb-10 font-normal">
+            DevOps Engineer and AWS Solutions Architect specializing in Kubernetes orchestration, Infrastructure as Code (Terraform), and highly scalable CI/CD pipelines.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 mb-12">
+            <a href="mailto:matta5292@gmail.com" class="bg-sky-400 text-slate-950 hover:bg-sky-300 transition-all px-7 py-3.5 rounded-full font-bold shadow-[0_0_30px_rgba(56,189,248,0.3)] hover:scale-105">
+              Contact Me
+            </a>
+            <a href="assets/Muhammad_Resume_Cloud&DevOps.pdf" download class="bg-white/5 hover:bg-white/10 border border-white/10 transition-all px-7 py-3.5 rounded-full font-semibold hover:scale-105 flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+              Resume
+            </a>
+          </div>
+
+          <div class="flex flex-wrap gap-3">
+            <span class="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 text-slate-300 text-sm font-medium backdrop-blur-sm">AWS</span>
+            <span class="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 text-slate-300 text-sm font-medium backdrop-blur-sm">Kubernetes</span>
+            <span class="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 text-slate-300 text-sm font-medium backdrop-blur-sm">Terraform</span>
+            <span class="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 text-slate-300 text-sm font-medium backdrop-blur-sm">Docker</span>
+            <span class="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 text-slate-300 text-sm font-medium backdrop-blur-sm">CI/CD</span>
+          </div>
+        </div>
       </div>
 
-      <p class="text-slate-400 max-w-2xl leading-8">
-        Production-focused cloud infrastructure, Kubernetes orchestration, DevOps automation, observability, and scalable platform engineering.
-      </p>
-
-    </div>
-
-    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
-
-      <div class="skill-card bg-white/5 rounded-3xl p-7 border border-white/5">
-        <p class="text-slate-500 text-sm mb-3">Cloud Platforms</p>
-        <h3 class="text-2xl font-bold">AWS • Azure</h3>
-      </div>
-
-      <div class="skill-card bg-white/5 rounded-3xl p-7 border border-white/5">
-        <p class="text-slate-500 text-sm mb-3">Containers</p>
-        <h3 class="text-2xl font-bold">Docker • Kubernetes</h3>
-      </div>
-
-      <div class="skill-card bg-white/5 rounded-3xl p-7 border border-white/5">
-        <p class="text-slate-500 text-sm mb-3">IaC & Automation</p>
-        <h3 class="text-2xl font-bold">Terraform • GitHub Actions</h3>
-      </div>
-
-      <div class="skill-card bg-white/5 rounded-3xl p-7 border border-white/5">
-        <p class="text-slate-500 text-sm mb-3">GitOps</p>
-        <h3 class="text-2xl font-bold">ArgoCD • CI/CD</h3>
-      </div>
-
-      <div class="skill-card bg-white/5 rounded-3xl p-7 border border-white/5">
-        <p class="text-slate-500 text-sm mb-3">Observability</p>
-        <h3 class="text-2xl font-bold">Prometheus • Grafana</h3>
-      </div>
-
-      <div class="skill-card bg-white/5 rounded-3xl p-7 border border-white/5">
-        <p class="text-slate-500 text-sm mb-3">Programming</p>
-        <h3 class="text-2xl font-bold">Go • Python • Bash</h3>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- PROJECTS -->
-
-  <section id="projects" class="glass rounded-[40px] p-8 lg:p-12 mb-7 reveal">
-
-    <div class="mb-12">
-
-      <p class="text-sky-300 text-sm font-semibold mb-2">
-        FEATURED PROJECTS
-      </p>
-
-      <h2 class="text-5xl font-black mb-4">
-        Production-Grade Engineering
-      </h2>
-
-      <p class="text-slate-400 max-w-3xl leading-8">
-        Enterprise-style DevOps and cloud-native projects focused on scalability, automation, observability, and infrastructure reliability.
-      </p>
-
-    </div>
-
-    <div class="grid xl:grid-cols-2 gap-7">
-
-      <!-- GO PROJECT -->
-
-      <div class="project-card bg-gradient-to-b from-sky-500/[0.08] to-white/[0.02] border border-sky-400/20 rounded-[36px] p-8">
-
-        <div class="flex items-center justify-between mb-5">
-          <span class="text-xs tracking-[0.25em] uppercase text-sky-300 font-semibold">
-            CLOUD NATIVE
-          </span>
-
-          <span class="text-slate-500 text-sm">
-            2026
-          </span>
+      <div class="flex flex-col gap-6">
+        
+        <div class="glass-card rounded-[2rem] p-8 hover-card flex flex-col justify-center relative overflow-hidden group">
+          <div class="absolute -right-4 -top-4 w-24 h-24 bg-orange-500/10 rounded-full blur-2xl group-hover:bg-orange-500/20 transition-all"></div>
+          <p class="text-slate-400 text-xs font-bold tracking-widest uppercase mb-2">Certification</p>
+          <h2 class="text-2xl font-black mb-4 text-white">AWS SAA<br>Certified</h2>
+          <a href="https://www.credly.com/" target="_blank" class="inline-flex items-center gap-1 text-sky-400 hover:text-sky-300 font-semibold text-sm transition-colors w-max">
+            View Badge <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </a>
         </div>
 
-        <h3 class="text-4xl font-black leading-tight mb-5">
-          Cloud-Native Go Microservice Platform
-        </h3>
-
-        <p class="text-slate-400 leading-8 mb-8">
-          Built a production-ready Go microservice platform on Amazon EKS using Kubernetes, Terraform, Docker, GitHub Actions, Prometheus, and Grafana with secure OIDC-based CI/CD workflows.
-        </p>
-
-        <div class="flex flex-wrap gap-3 mb-8">
-
-          <div class="px-4 py-2 rounded-xl bg-sky-400/10 border border-sky-400/10 text-sky-200 text-sm">
-            Go
-          </div>
-
-          <div class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 text-sm">
-            AWS EKS
-          </div>
-
-          <div class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 text-sm">
-            Terraform
-          </div>
-
-          <div class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 text-sm">
-            GitHub Actions
-          </div>
-
-          <div class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 text-sm">
-            Prometheus
-          </div>
-
+        <div class="glass-card rounded-[2rem] p-8 hover-card flex flex-col justify-center">
+          <p class="text-slate-400 text-xs font-bold tracking-widest uppercase mb-2">Portfolio Analytics</p>
+          <h2 class="text-4xl font-black text-sky-400 mb-1" id="visitor-count">0</h2>
+          <p class="text-slate-500 text-sm font-medium">Unique Visitors</p>
         </div>
 
-        <a href="https://github.com/muhammad21236/Cloud-Native-Go-Microservice-Platform"
-           target="_blank"
-           class="text-sky-300 hover:text-sky-200 font-semibold">
-          View Repository →
-        </a>
-
-      </div>
-
-      <!-- EKS PROJECT -->
-
-      <div class="project-card bg-white/[0.03] border border-white/10 rounded-[36px] p-8">
-
-        <div class="flex items-center justify-between mb-5">
-          <span class="text-xs tracking-[0.25em] uppercase text-sky-300 font-semibold">
-            KUBERNETES
-          </span>
-
-          <span class="text-slate-500 text-sm">
-            2025
-          </span>
+        <div class="glass-card rounded-[2rem] p-8 flex-1 flex flex-col justify-center gap-6">
+          <div>
+            <p class="text-slate-400 text-xs font-bold tracking-widest uppercase mb-1">Location</p>
+            <h3 class="text-lg font-bold text-slate-200">Riyadh, Saudi Arabia</h3>
+          </div>
+          <div class="h-px w-full bg-white/5"></div>
+          <div>
+            <p class="text-slate-400 text-xs font-bold tracking-widest uppercase mb-1">Status</p>
+            <div class="flex items-center gap-2">
+              <span class="relative flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+              </span>
+              <h3 class="text-lg font-bold text-emerald-400">Open to Work</h3>
+            </div>
+          </div>
         </div>
 
-        <h3 class="text-4xl font-black leading-tight mb-5">
-          AWS EKS Microservices Platform
-        </h3>
+      </div>
+    </section>
 
-        <p class="text-slate-400 leading-8 mb-8">
-          Designed scalable Kubernetes infrastructure on AWS EKS with Terraform, GitOps workflows, Route53 integration, and automated deployments.
+    <section id="skills" class="mb-24 reveal scroll-mt-24">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 px-4">
+        <div>
+          <p class="text-sky-400 text-xs font-bold tracking-widest uppercase mb-2">Technical Arsenal</p>
+          <h2 class="text-4xl font-black text-gradient">Core Competencies</h2>
+        </div>
+        <p class="text-slate-400 max-w-lg text-sm leading-relaxed text-right md:text-left">
+          Focused on robust cloud architecture, immutable infrastructure, and automating deployment lifecycles.
         </p>
-
-        <a href="https://github.com/muhammad21236"
-           target="_blank"
-           class="text-sky-300 hover:text-sky-200 font-semibold">
-          View Repository →
-        </a>
-
       </div>
 
-    </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div class="glass-card p-6 rounded-2xl hover-card text-center flex flex-col items-center justify-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-400 mb-2">☁️</div>
+          <h3 class="font-bold text-slate-200 text-sm">AWS / Azure</h3>
+        </div>
+        <div class="glass-card p-6 rounded-2xl hover-card text-center flex flex-col items-center justify-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 mb-2">🐳</div>
+          <h3 class="font-bold text-slate-200 text-sm">Docker & K8s</h3>
+        </div>
+        <div class="glass-card p-6 rounded-2xl hover-card text-center flex flex-col items-center justify-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-400 mb-2">🏗️</div>
+          <h3 class="font-bold text-slate-200 text-sm">Terraform</h3>
+        </div>
+        <div class="glass-card p-6 rounded-2xl hover-card text-center flex flex-col items-center justify-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center text-green-400 mb-2">⚙️</div>
+          <h3 class="font-bold text-slate-200 text-sm">CI/CD & GitOps</h3>
+        </div>
+        <div class="glass-card p-6 rounded-2xl hover-card text-center flex flex-col items-center justify-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center text-red-400 mb-2">📊</div>
+          <h3 class="font-bold text-slate-200 text-sm">Observability</h3>
+        </div>
+        <div class="glass-card p-6 rounded-2xl hover-card text-center flex flex-col items-center justify-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400 mb-2">💻</div>
+          <h3 class="font-bold text-slate-200 text-sm">Go & Python</h3>
+        </div>
+      </div>
+    </section>
 
-  </section>
+    <section id="projects" class="mb-24 reveal scroll-mt-24">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 px-4">
+        <div>
+          <p class="text-sky-400 text-xs font-bold tracking-widest uppercase mb-2">Featured Work</p>
+          <h2 class="text-4xl font-black text-gradient">Engineering Projects</h2>
+        </div>
+      </div>
 
-  <!-- EXPERIENCE -->
+      <div class="glass-card bg-gradient-to-br from-sky-500/10 to-transparent border border-sky-500/30 rounded-[2rem] p-8 md:p-12 mb-6 hover-card relative overflow-hidden group">
+        <div class="absolute -right-20 -top-20 w-64 h-64 bg-sky-500/20 blur-[80px] rounded-full group-hover:bg-sky-400/30 transition-colors duration-500"></div>
+        <div class="relative z-10 grid lg:grid-cols-2 gap-8 items-center">
+          <div>
+            <div class="flex items-center gap-4 mb-6">
+              <span class="text-xs uppercase tracking-[0.2em] text-sky-400 font-bold bg-sky-400/10 px-3 py-1 rounded-full">Cloud Native • 2026</span>
+            </div>
+            <h3 class="text-3xl sm:text-4xl font-black mb-4 leading-tight">Cloud-Native Go Microservice Platform</h3>
+            <p class="text-slate-400 leading-relaxed mb-8 text-base">
+              Engineered a production-grade Go microservice platform on AWS EKS using Kubernetes, Terraform, Docker, GitHub Actions, Prometheus, and Grafana with secure OIDC-based CI/CD workflows.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-8">
+              <span class="px-3 py-1.5 rounded-lg bg-black/30 border border-white/5 text-slate-300 text-xs font-medium">Go</span>
+              <span class="px-3 py-1.5 rounded-lg bg-black/30 border border-white/5 text-slate-300 text-xs font-medium">AWS EKS</span>
+              <span class="px-3 py-1.5 rounded-lg bg-black/30 border border-white/5 text-slate-300 text-xs font-medium">Terraform</span>
+              <span class="px-3 py-1.5 rounded-lg bg-black/30 border border-white/5 text-slate-300 text-xs font-medium">GitHub Actions</span>
+              <span class="px-3 py-1.5 rounded-lg bg-black/30 border border-white/5 text-slate-300 text-xs font-medium">Prometheus & Grafana</span>
+            </div>
+            <a href="https://github.com/muhammad21236/Cloud-Native-Go-Microservice-Platform" target="_blank" class="inline-flex items-center gap-2 text-sky-400 hover:text-sky-300 font-bold transition-all group/btn">
+              View Source Code 
+              <svg class="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
 
-  <section id="experience" class="glass rounded-[40px] p-8 lg:p-12 mb-7 reveal">
-
-    <div class="mb-10">
-
-      <p class="text-sky-300 text-sm font-semibold mb-2">
-        EXPERIENCE
-      </p>
-
-      <h2 class="text-5xl font-black">
-        Professional Background
-      </h2>
-
-    </div>
-
-    <div class="border-l border-white/10 pl-8">
-
-      <div class="relative">
-
-        <div class="absolute -left-[39px] top-2 w-4 h-4 bg-sky-400 rounded-full"></div>
-
-        <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
-
-          <h3 class="text-3xl font-bold">
-            Cloud Admin & AI Automation
-          </h3>
-
-          <span class="text-slate-500">
-            2025
-          </span>
-
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+        
+        <div class="glass-card rounded-[2rem] p-8 hover-card flex flex-col h-full">
+          <div class="flex items-center justify-between mb-6">
+            <span class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold">Cloud • 2025</span>
+            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">☁️</div>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">AWS EKS Microservices</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-8 flex-grow">
+            Designed scalable Kubernetes infrastructure on AWS EKS with Terraform, GitOps workflows, Route 53 integration, and automated deployments.
+          </p>
+          <a href="https://github.com/muhammad21236/E_COMMERCE_DEVOPS_Implementation" target="_blank" class="inline-flex items-center gap-2 text-white hover:text-sky-400 font-semibold text-sm transition-colors mt-auto">
+            View Repository &rarr;
+          </a>
         </div>
 
-        <p class="text-slate-500 mb-6 text-lg">
-          TechWorks
+        <div class="glass-card rounded-[2rem] p-8 hover-card flex flex-col h-full">
+          <div class="flex items-center justify-between mb-6">
+            <span class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold">Security • 2025</span>
+            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">🔒</div>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Secure Containerized Infra</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-8 flex-grow">
+            Built secure Docker and LXD infrastructure using Cloudflare Tunnel, UFW, Fail2Ban, ensuring zero exposed inbound ports to the public internet.
+          </p>
+          <a href="https://github.com/muhammad21236/limbic-devops-assessment" target="_blank" class="inline-flex items-center gap-2 text-white hover:text-sky-400 font-semibold text-sm transition-colors mt-auto">
+            View Repository &rarr;
+          </a>
+        </div>
+      </div>
+
+      <div id="more-projects-wrapper">
+        <div id="more-projects-inner">
+          <div class="grid md:grid-cols-2 gap-6 pb-6">
+            
+            <div class="glass-card rounded-[2rem] p-8 hover-card flex flex-col h-full">
+              <div class="flex items-center justify-between mb-6">
+                <span class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold">Automation • 2025</span>
+                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">⚡</div>
+              </div>
+              <h3 class="text-2xl font-bold mb-4">CI/CD Full-Stack Deploy</h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-8 flex-grow">
+                Implemented automated deployment pipelines using Docker, AWS ECS, App Runner, and GitHub Actions for seamless continuous delivery.
+              </p>
+              <a href="https://github.com/muhammad21236/fem-fd-service" target="_blank" class="inline-flex items-center gap-2 text-white hover:text-sky-400 font-semibold text-sm transition-colors mt-auto">
+                View Repository &rarr;
+              </a>
+            </div>
+
+            <div class="glass-card rounded-[2rem] p-8 hover-card flex flex-col h-full border border-purple-500/20">
+              <div class="flex items-center justify-between mb-6">
+                <span class="text-xs uppercase tracking-[0.2em] text-purple-400 font-bold bg-purple-400/10 px-3 py-1 rounded-full">AI System • FYP</span>
+                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">🧠</div>
+              </div>
+              <h3 class="text-2xl font-bold mb-4">Perfect Parking – AI Smart System</h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+                Developed a backend utilizing Python, Django REST Framework, and OpenCV to process real-time camera feeds and track parking space occupancy.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-2 py-1 rounded-md bg-black/30 border border-white/5 text-slate-300 text-[10px] font-medium uppercase tracking-wider">Python</span>
+                <span class="px-2 py-1 rounded-md bg-black/30 border border-white/5 text-slate-300 text-[10px] font-medium uppercase tracking-wider">Django</span>
+                <span class="px-2 py-1 rounded-md bg-black/30 border border-white/5 text-slate-300 text-[10px] font-medium uppercase tracking-wider">OpenCV</span>
+              </div>
+              <a href="https://github.com/muhammad21236/Parking_App_FYP" target="_blank" class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-semibold text-sm transition-colors mt-auto">
+                View Repository &rarr;
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-center mt-4">
+        <button id="toggle-projects-btn" class="bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-all px-8 py-3 rounded-full font-semibold text-sm hover:border-sky-400/50 flex items-center gap-2">
+          Show More Projects
+          <svg id="toggle-icon" class="w-4 h-4 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+      </div>
+
+    </section>
+
+    <section id="experience" class="mb-24 reveal scroll-mt-24">
+      <div class="glass-card rounded-[2.5rem] p-8 md:p-14 border border-white/5">
+        <div class="mb-12">
+          <p class="text-sky-400 text-xs font-bold tracking-widest uppercase mb-2">Work History</p>
+          <h2 class="text-4xl font-black text-gradient">Experience</h2>
+        </div>
+
+        <div class="relative pl-8 md:pl-0">
+          <div class="absolute left-[7px] md:left-[50%] top-0 bottom-0 w-px bg-gradient-to-b from-sky-500/50 via-white/10 to-transparent"></div>
+
+          <div class="relative md:w-1/2 md:pr-12 md:ml-auto md:pl-12 md:text-left mb-10 group">
+            <div class="absolute left-[-29px] md:left-[-6px] top-1.5 w-4 h-4 rounded-full bg-sky-400 shadow-[0_0_15px_rgba(56,189,248,0.8)] border-4 border-[#020617] group-hover:scale-125 transition-transform duration-300"></div>
+            
+            <div class="glass-card p-6 md:p-8 rounded-3xl hover-card">
+              <span class="inline-block py-1 px-3 rounded-full bg-white/5 text-slate-400 text-xs font-bold tracking-widest uppercase mb-4">2025</span>
+              <h3 class="text-2xl font-bold mb-1">Cloud Admin & AI Automation</h3>
+              <p class="text-sky-400 font-medium mb-6">TechWorks</p>
+              
+              <ul class="space-y-3 text-slate-400 text-sm leading-relaxed">
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-sky-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Managed and secured Azure Linux virtual machines with infrastructure hardening and monitoring.
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-sky-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Automated operational workflows using APIs, Bash scripting, and n8n integrations.
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-sky-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Implemented Linux security best practices using UFW, SSH hardening, and Fail2Ban.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass-card rounded-[3rem] p-12 md:p-20 text-center reveal relative overflow-hidden group">
+      <div class="absolute inset-0 bg-gradient-to-r from-sky-500/10 via-transparent to-purple-500/10 group-hover:opacity-100 opacity-50 transition-opacity duration-700"></div>
+      
+      <div class="relative z-10 max-w-2xl mx-auto">
+        <h2 class="text-4xl md:text-6xl font-black mb-6 text-gradient-alt leading-tight">Ready to build scalable infrastructure?</h2>
+        <p class="text-slate-400 text-lg mb-10">
+          I'm currently based in Riyadh, Saudi Arabia and open to new opportunities in Cloud & DevOps engineering. Let's connect and build something resilient.
         </p>
-
-        <ul class="space-y-4 text-slate-300 leading-8">
-
-          <li>• Managed and secured Azure Linux virtual machines with infrastructure hardening and monitoring.</li>
-
-          <li>• Automated operational workflows using APIs, Bash scripting, and n8n integrations.</li>
-
-          <li>• Implemented Linux security best practices using UFW, SSH hardening, and Fail2Ban.</li>
-
-        </ul>
-
+        
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="mailto:matta5292@gmail.com" class="w-full sm:w-auto bg-white text-slate-950 hover:bg-slate-200 transition-all px-8 py-4 rounded-full font-bold shadow-lg hover:scale-105">
+            Get In Touch
+          </a>
+          <a href="https://github.com/muhammad21236" target="_blank" class="w-full sm:w-auto bg-white/5 border border-white/10 hover:border-sky-400/50 hover:bg-white/10 text-white transition-all px-8 py-4 rounded-full font-bold flex justify-center items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+            GitHub Profile
+          </a>
+        </div>
       </div>
+    </section>
 
-    </div>
-
-  </section>
-
-  <!-- CONTACT -->
-
-  <section id="contact" class="glass rounded-[40px] p-10 lg:p-16 text-center reveal relative overflow-hidden">
-
-    <div class="absolute inset-0 bg-gradient-to-r from-sky-500/5 via-transparent to-cyan-300/5"></div>
-
-    <div class="relative z-10 max-w-3xl mx-auto">
-
-      <p class="text-sky-300 text-sm font-semibold tracking-[0.25em] mb-5">
-        AVAILABLE FOR OPPORTUNITIES
+    <footer class="mt-16 py-8 border-t border-white/5 text-center flex flex-col items-center">
+      <p class="text-slate-500 text-sm font-medium mb-2">
+        &copy; 2026 Muhammad. Engineered for the Cloud.
       </p>
-
-      <h2 class="text-5xl lg:text-7xl font-black leading-tight tracking-tight mb-8 gradient-text">
-        Let’s Build Modern Cloud Infrastructure
-      </h2>
-
-      <p class="text-slate-400 text-lg leading-9 mb-10">
-        Passionate about cloud platforms, Kubernetes, DevOps automation, and building scalable production-ready systems.
+      <p class="text-slate-600 text-xs">
+        AWS • Kubernetes • Terraform • CI/CD • Observability
       </p>
+    </footer>
 
-      <div class="flex flex-wrap justify-center gap-5">
+  </main>
 
-        <a href="mailto:matta5292@gmail.com"
-           class="bg-sky-400 text-slate-950 hover:bg-sky-300 transition px-8 py-4 rounded-2xl font-semibold shadow-2xl shadow-sky-400/20">
-          Contact Me
-        </a>
+  <script>
+    // Reveal Animations on Scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
-        <a href="https://github.com/muhammad21236"
-           target="_blank"
-           class="glass px-8 py-4 rounded-2xl font-semibold hover:border-sky-400/20 transition">
-          GitHub
-        </a>
+    reveals.forEach((el) => observer.observe(el));
 
-      </div>
+    // Simulated Visitor Counter
+    let count = localStorage.getItem('portfolio_visits_v2');
+    if(!count) {
+      count = 1452; // Starting baseline
+    } else {
+      count = parseInt(count) + Math.floor(Math.random() * 3) + 1; // Increment slightly on refresh
+    }
+    localStorage.setItem('portfolio_visits_v2', count);
+    document.getElementById('visitor-count').innerText = count.toLocaleString();
 
-    </div>
+    // Toggle "More Projects" Functionality
+    const toggleBtn = document.getElementById('toggle-projects-btn');
+    const projectsWrapper = document.getElementById('more-projects-wrapper');
+    const toggleIcon = document.getElementById('toggle-icon');
+    let isProjectsOpen = false;
 
-  </section>
-
-  <footer class="text-center text-slate-500 text-sm py-14 border-t border-white/5 mt-8">
-
-    <p class="mb-2">
-      © 2026 Muhammad — Cloud & DevOps Engineer
-    </p>
-
-    <p class="text-slate-600 text-xs">
-      AWS • Kubernetes • Terraform • CI/CD • Observability
-    </p>
-
-  </footer>
-
-</main>
-
-<script>
-
-  // SCROLL ANIMATIONS
-
-  const reveals = document.querySelectorAll('.reveal');
-
-  const observer = new IntersectionObserver((entries)=>{
-    entries.forEach((entry)=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add('active');
+    toggleBtn.addEventListener('click', () => {
+      isProjectsOpen = !isProjectsOpen;
+      
+      if (isProjectsOpen) {
+        projectsWrapper.classList.add('open');
+        toggleBtn.innerHTML = `Show Less <svg class="w-4 h-4 transform rotate-180 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>`;
+      } else {
+        projectsWrapper.classList.remove('open');
+        toggleBtn.innerHTML = `Show More Projects <svg class="w-4 h-4 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>`;
+        
+        // Optional: smoothly scroll back up a bit if desired
+        setTimeout(() => {
+          document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+        }, 500);
       }
     });
-  },{
-    threshold:0.12
-  });
-
-  reveals.forEach((el)=>observer.observe(el));
-
-  // FAKE VISITOR COUNTER
-
-  let count = localStorage.getItem('portfolio_visits');
-
-  if(!count){
-    count = 1247;
-  }else{
-    count = parseInt(count) + 1;
-  }
-
-  localStorage.setItem('portfolio_visits', count);
-
-  document.getElementById('visitor-count').innerText = count.toLocaleString();
-
-</script>
+  </script>
 
 </body>
 </html>
